@@ -107,6 +107,12 @@ public class DSNV {
         else System.out.println("Khong tim thay nhan vien nao co ho " + ho);
         return null;
     }
+    public void tim_tennv() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhap ten nhan vien can tim: ");
+        String ten = sc.next();
+        tim_tennv(ten);
+    }
     public NhanVien[] tim_tennv(String ten) {
         NhanVien[] timten = new NhanVien[0];
         int m=0;

@@ -1,3 +1,5 @@
+package Java.DoAn.Class_chinh;
+
 public class PhieuNhapHang {
      //thuộc tính    
     String maPNH, maNV, maNCC; 

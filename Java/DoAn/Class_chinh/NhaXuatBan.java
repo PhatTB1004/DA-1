@@ -1,5 +1,7 @@
-//package DoAn.Class_chinh;
+package Java.DoAn.Class_chinh;
+
 import java.util.Scanner;
+
 public class NhaXuatBan {
      //thuộc tính    
     String maNXB, tenNXB,diaChi,SoDienThoai,Email; 
@@ -24,7 +26,7 @@ public class NhaXuatBan {
     }
     // input / output for NhaXuatBan
     public void nhap(){
-        java.util.Scanner sc = new java.util.Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("Nhap ma NXB: ");
         maNXB = sc.nextLine();
         System.out.println("Nhap ten NXB: ");
