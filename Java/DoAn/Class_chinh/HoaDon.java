@@ -2,7 +2,7 @@ package Java.DoAn.Class_chinh;
 
 public class HoaDon {
     // Thuộc tính:
-    String maHD, maNV, maKH, ngaylap;
+    String mahd, manv, makh, ngaylap;
     double tongtien;
 
     // Phương thức:
@@ -10,17 +10,17 @@ public class HoaDon {
     //Hàm thiết lập:
     public HoaDon() {
     }
-    public HoaDon(String maHD, String maNV, String maKH, String ngaylap, double tongtien) {
-        this.maHD = maHD;
-        this.maNV = maNV;
-        this.maKH = maKH;
+    public HoaDon(String mahd, String manv, String makh, String ngaylap, double tongtien) {
+        this.mahd = mahd;
+        this.manv = manv;
+        this.makh = makh;
         this.ngaylap = ngaylap;
         this.tongtien = tongtien;
     }
     public HoaDon(HoaDon h) {
-        this.maHD = h.maHD;
-        this.maNV = h.maNV;
-        this.maKH = h.maKH;
+        this.mahd = h.mahd;
+        this.manv = h.manv;
+        this.makh = h.makh;
         this.ngaylap = h.ngaylap;
         this.tongtien = h.tongtien;
     }
@@ -29,38 +29,38 @@ public class HoaDon {
     public void nhap() {
         java.util.Scanner sc = new java.util.Scanner(System.in);
         System.out.print("Nhap ma hoa don: ");
-        maHD = sc.nextLine();
+        mahd = sc.nextLine();
         System.out.print("Nhap ma nhan vien: ");
-        maNV = sc.nextLine();
+        manv = sc.nextLine();
         System.out.print("Nhap ma khach hang: ");
-        maKH = sc.nextLine();
+        makh = sc.nextLine();
         System.out.print("Nhap ngay lap: ");
         ngaylap = sc.nextLine();
         System.out.print("Nhap tong tien: ");
         tongtien = sc.nextDouble();
     }
     public void xuat() {
-        System.out.printf("%-10s %-10s %-10s %-15s %-10.2f\n", maHD, maNV, maKH, ngaylap, tongtien);
+        System.out.printf("%-10s %-10s %-10s %-15s %-10.2f\n", mahd, manv, makh, ngaylap, tongtien);
     }
 
     // Get, set:
     public String getMaHD() {
-        return maHD;
+        return mahd;
     }
-    public void setMaHD(String maHD) {
-        this.maHD = maHD;
+    public void setMaHD(String mahd) {
+        this.mahd = mahd;
     }
     public String getMaNV() {
-        return maNV;
+        return manv;
     }
-    public void setMaNV(String maNV) {
-        this.maNV = maNV;
+    public void setMaNV(String manv) {
+        this.manv = manv;
     }
     public String getMaKH() {
-        return maKH;
+        return makh;
     }
-    public void setMaKH(String maKH) {
-        this.maKH = maKH;
+    public void setMaKH(String makh) {
+        this.makh = makh;
     }
     public String getNgayLap() {
         return ngaylap;

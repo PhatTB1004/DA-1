@@ -2,32 +2,32 @@ package Java.DoAn.Class_chinh;
 
 public class Sach {
     // Thuộc tính:
-    String masach, tensach, tacgia, maTL, maNXB;
+    String masach, tensach, tacgia, matl, manxb;
     int soLuong;
-    double donGia;
+    double dongia;
 
     // Phương thức:
 
     //Hàm thiết lập:
     public Sach() {
     }
-    public Sach(String masach, String tensach, String tacgia, String maTL, String maNXB, int soLuong, double donGia) {
+    public Sach(String masach, String tensach, String tacgia, String matl, String manxb, int soLuong, double dongia) {
         this.masach = masach;
         this.tensach = tensach;
         this.tacgia = tacgia;
-        this.maTL = maTL;
-        this.maNXB = maNXB;
+        this.matl = matl;
+        this.manxb = manxb;
         this.soLuong = soLuong;
-        this.donGia = donGia;
+        this.dongia = dongia;
     }
     public Sach(Sach s) {
         this.masach = s.masach;
         this.tensach = s.tensach;
         this.tacgia = s.tacgia;
-        this.maTL = s.maTL;
-        this.maNXB = s.maNXB;
+        this.matl = s.matl;
+        this.manxb = s.manxb;
         this.soLuong = s.soLuong;
-        this.donGia = s.donGia;
+        this.dongia = s.dongia;
     }
 
     // Nhập, xuất:
@@ -40,16 +40,16 @@ public class Sach {
         System.out.print("Nhap tac gia: ");
         tacgia = sc.nextLine();
         System.out.print("Nhap ma the loai: ");
-        maTL = sc.nextLine();
+        matl = sc.nextLine();
         System.out.print("Nhap ma nha xuat ban: ");
-        maNXB = sc.nextLine();
+        manxb = sc.nextLine();
         System.out.print("Nhap so luong: ");
         soLuong = sc.nextInt();
         System.out.print("Nhap don gia: ");
-        donGia = sc.nextDouble();
+        dongia = sc.nextDouble();
     }
     public void xuat() {
-        System.out.printf("%-10s %-20s %-20s %-10s %-10s %-10d %-10.2f", masach, tensach, tacgia, maTL, maNXB, soLuong, donGia);
+        System.out.printf("%-10s %-20s %-20s %-10s %-10s %-10d %-10.2f", masach, tensach, tacgia, matl, manxb, soLuong, dongia);
     }
 
     // Get, set:
@@ -72,16 +72,16 @@ public class Sach {
         this.tacgia = tacgia;
     }
     public String getMaTL() {
-        return maTL;
+        return matl;
     }
-    public void setMaTL(String maTL) {
-        this.maTL = maTL;
+    public void setMaTL(String matl) {
+        this.matl = matl;
     }
     public String getMaNXB() {
-        return maNXB;
+        return manxb;
     }
-    public void setMaNXB(String maNXB) {
-        this.maNXB = maNXB;
+    public void setMaNXB(String manxb) {
+        this.manxb = manxb;
     }
     public int getSoLuong() {
         return soLuong;
@@ -90,9 +90,9 @@ public class Sach {
         this.soLuong = soLuong;
     }
     public double getDonGia() {
-        return donGia;
+        return dongia;
     }
-    public void setDonGia(double donGia) {
-        this.donGia = donGia;
+    public void setDonGia(double dongia) {
+        this.dongia = dongia;
     }
 }

@@ -4,20 +4,20 @@ import Java.DoAn.Class_chinh.Sach;
 import Java.DoAn.Class_chinh.SachNuocNgoai;
 import Java.DoAn.Class_chinh.TapChi;
 
-public class DSSach {
+public class DanhSachSach {
     Sach[] ds;
     int n;
 
     //Hàm thiết lập:
-    public DSSach() {
+    public DanhSachSach() {
         ds = new Sach[100];
         n = 0;
     }
-    public DSSach(Sach[] ds, int n) {
+    public DanhSachSach(Sach[] ds, int n) {
         this.ds = ds;
         this.n = n;
     }
-    public DSSach(DSSach s) {
+    public DanhSachSach(DanhSachSach s) {
         this.ds = s.ds;
         this.n = s.n;
     }

@@ -3,22 +3,22 @@ package Java.DoAn.DS_Class;
 import java.util.Scanner;
 import Java.DoAn.Class_chinh.NhaCungCap;
 
-public class DSNCC {
+public class DanhSachNCC {
     NhaCungCap[] dsNCC;
     int n;
 
     // Hàm thiết lập
-    public DSNCC() {
+    public DanhSachNCC() {
         dsNCC = new NhaCungCap[100];
         n = 0;
     }
 
-    public DSNCC(NhaCungCap[] dsNCC, int n) {
+    public DanhSachNCC(NhaCungCap[] dsNCC, int n) {
         this.dsNCC = dsNCC;
         this.n = n;
     }
 
-    public DSNCC(DSNCC ds) {
+    public DanhSachNCC(DanhSachNCC ds) {
         this.n = ds.n;
         this.dsNCC = new NhaCungCap[100];
         for (int i = 0; i < n; i++) {

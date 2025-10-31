@@ -1,5 +1,7 @@
 package Java.DoAn.Class_chinh;
 
+import java.util.Scanner;
+
 public class CTPhieuNhapHang {
     //thuộc tính    
     String maPNH, maSach; 
@@ -30,26 +32,47 @@ public class CTPhieuNhapHang {
         this.donGia=ctPNH.donGia;
         this.thanhTien=ctPNH.thanhTien;
     }
-    //in , out
     public void nhap(){
-        java.util.Scanner sc = new java.util.Scanner(System.in);
-        System.out.println("Nhap ma Phieu Nhap Hang: ");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhap ma Phieu Nhap Hang: ");
         maPNH = sc.nextLine();
-        System.out.println("Nhap sach: ");
+        System.out.print("Nhap sach: ");
         maSach= sc.nextLine();
-        System.out.println("Nhap so luong: ");
+        System.out.print("Nhap so luong: ");
         soLuong = sc.nextInt();
-        System.out.println("Nhap don gia: ");
+        System.out.print("Nhap don gia: ");
         donGia = sc.nextDouble();
-        System.out.println("Thanh tien: ");
-        thanhTien = sc.nextDouble();
+        System.out.print("Thanh tien: ");
+        thanhTien = soLuong * donGia;
     }
 
     public void xuat(){
-        System.out.printf("%-10s %-20 %-20 %-10 %-10 %-10 %10.2f", maPNH,maSach,soLuong,donGia,thanhTien);
+          System.out.printf("%-10s %-15s %-10d %12.2f %12.2f%n", 
+            maPNH, maSach, soLuong, donGia, thanhTien);
     }
 
- // Get, set:
+    public void tinhThanhTien() {
+        this.thanhTien = this.soLuong * this.donGia;
+    }
+
+    public boolean isValid() {
+        return !maPNH.isEmpty() && !maSach.isEmpty() && soLuong > 0 && donGia > 0;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        CTPhieuNhapHang other = (CTPhieuNhapHang) obj;
+        return maPNH.equals(other.maPNH) && maSach.equals(other.maSach);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("CTPhieuNhapHang[maPNH=%s, maSach=%s, soLuong=%d, donGia=%.2f, thanhTien=%.2f]",
+            maPNH, maSach, soLuong, donGia, thanhTien);
+    }
+
     public String getmaPNH() {
         return maPNH;
     }
@@ -67,6 +90,7 @@ public class CTPhieuNhapHang {
     }
     public void setsoLuong(int soLuong) {
         this.soLuong = soLuong;
+        this.thanhTien = this.soLuong * this.donGia;
 
     }
     public Double donGia() {
@@ -74,6 +98,7 @@ public class CTPhieuNhapHang {
     }
     public void donGia(double donGia) {
         this.donGia = donGia;
+        this.thanhTien = this.donGia * this.soLuong;
     }
     public double thanhTien() {
         return thanhTien;

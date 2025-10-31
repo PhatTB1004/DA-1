@@ -1,11 +1,11 @@
 package Java.DoAn.Menu;
 
 import java.util.Scanner;
-import Java.DoAn.DS_Class.DSNCC;
+import Java.DoAn.DS_Class.DanhSachNCC;
 
 public class MenuNCC {
     public void menuNCC() {
-        DSNCC dsNCC = new DSNCC();
+        DanhSachNCC dsNCC = new DanhSachNCC();
         Scanner sc = new Scanner(System.in);
         int choice;
         do {

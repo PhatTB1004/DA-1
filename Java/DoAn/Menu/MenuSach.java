@@ -1,11 +1,11 @@
 package Java.DoAn.Menu;
 
 import java.util.Scanner;
-import Java.DoAn.DS_Class.DSSach;
+import Java.DoAn.DS_Class.DanhSachSach;
 
 public class MenuSach {
     public void menuSach() {
-        DSSach dsSach = new DSSach();
+        DanhSachSach dsSach = new DanhSachSach();
         Scanner sc = new Scanner(System.in);
         int choice;
         do {

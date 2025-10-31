@@ -1,11 +1,11 @@
 package Java.DoAn.Menu;
 
 import java.util.Scanner;
-import Java.DoAn.DS_Class.DSNV;
+import Java.DoAn.DS_Class.DanhSachNV;
 
 public class MenuNhanVien {
     public void menuNhanVien() {
-        DSNV dsNV = new DSNV();
+        DanhSachNV dsNV = new DanhSachNV();
         Scanner sc = new Scanner(System.in);
         int choice;
         do {

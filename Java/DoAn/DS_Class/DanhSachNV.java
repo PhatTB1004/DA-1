@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import Java.DoAn.Class_chinh.NhanVien;
 
-public class DSNV {
+public class DanhSachNV {
     // Thuộc tính:
     NhanVien[] dsnv;
     int n;
@@ -13,15 +13,15 @@ public class DSNV {
     // Phương thức:
 
     // Hàm thiết lập:
-    public DSNV() {
+    public DanhSachNV() {
         dsnv = new NhanVien[100];
         n = 0;
     }
-    public DSNV(NhanVien[] dsnv, int n) {
+    public DanhSachNV(NhanVien[] dsnv, int n) {
         this.dsnv = dsnv;
         this.n = n;
     }
-    public DSNV(DSNV ds) {
+    public DanhSachNV(DanhSachNV ds) {
         this.n = ds.n;
         this.dsnv = new NhanVien[100];
         for (int i = 0; i < n; i++) {
@@ -164,6 +164,7 @@ public class DSNV {
         suanv(ma);
     }
     public void suanv(String manv) {
+        java.util.Scanner sc = new java.util.Scanner(System.in);
         for (int i = 0; i < n; i++) {
             if (dsnv[i].getMaNV().equals(manv)) {               
                 System.out.println("Chon thong tin can sua:");
@@ -175,36 +176,36 @@ public class DSNV {
                 System.out.println("6. Luong");
                 System.out.println("0. Thoat");
                 System.out.print("Nhap lua chon: ");
-                int choice = new java.util.Scanner(System.in).nextInt();
+                int choice = sc.nextInt();
                 switch (choice) {
                     case 1:
                         System.out.print("Nhap ho moi: ");
-                        String ho = new java.util.Scanner(System.in).nextLine();
+                        String ho = sc.nextLine();
                         dsnv[i].setHo(ho);
                         break;
                     case 2:
                         System.out.print("Nhap ten moi: ");
-                        String ten = new java.util.Scanner(System.in).nextLine();
+                        String ten = sc.nextLine();
                         dsnv[i].setTen(ten);
                         break;
                     case 3:
                         System.out.print("Nhap SDT moi: ");
-                        String sdt = new java.util.Scanner(System.in).nextLine();
+                        String sdt = sc.nextLine();
                         dsnv[i].setSDT(sdt);
                         break;
                     case 4:
                         System.out.print("Nhap ngay sinh moi: ");
-                        String ngaysinh = new java.util.Scanner(System.in).nextLine();
+                        String ngaysinh = sc.nextLine();
                         dsnv[i].setNgaySinh(ngaysinh);
                         break;
                     case 5:
                         System.out.print("Nhap gioi tinh moi: ");
-                        String gioitinh = new java.util.Scanner(System.in).nextLine();
+                        String gioitinh = sc.nextLine();
                         dsnv[i].setGioiTinh(gioitinh);
                         break;
                     case 6:
                         System.out.print("Nhap luong moi: ");
-                        double luong = new java.util.Scanner(System.in).nextDouble();
+                        double luong = sc.nextDouble();
                         dsnv[i].setLuong(luong);
                         break;
                 } while (choice != 0);
