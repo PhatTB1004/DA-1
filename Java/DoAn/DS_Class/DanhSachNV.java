@@ -7,14 +7,13 @@ import Java.DoAn.Class_chinh.NhanVien;
 
 public class DanhSachNV {
     // Thuộc tính:
-    NhanVien[] dsnv;
-    int n;
+    private NhanVien[] dsnv;
+    private int n;
 
     // Phương thức:
 
     // Hàm thiết lập:
     public DanhSachNV() {
-        dsnv = new NhanVien[100];
         n = 0;
     }
     public DanhSachNV(NhanVien[] dsnv, int n) {
@@ -23,7 +22,7 @@ public class DanhSachNV {
     }
     public DanhSachNV(DanhSachNV ds) {
         this.n = ds.n;
-        this.dsnv = new NhanVien[100];
+        this.dsnv = new NhanVien[n];
         for (int i = 0; i < n; i++) {
             this.dsnv[i] = new NhanVien(ds.dsnv[i]);
         }
@@ -49,14 +48,14 @@ public class DanhSachNV {
     }
 
     // them
-    public void themdsnv() {
+    public void themNhanVien() {
         n = dsnv.length;
         dsnv = Arrays.copyOf(dsnv, n+1);
         dsnv[n] = new NhanVien();
         dsnv[n].nhap();
         n++;
     }
-    public void themdsnv(String manv) {
+    public void themNhanVien(String manv) {
         n = dsnv.length;
         dsnv = Arrays.copyOf(dsnv, n+1);
         dsnv[n] = new NhanVien();
@@ -147,7 +146,7 @@ public class DanhSachNV {
                 for (int j = i; j < n - 1; j++) {
                     dsnv[j] = dsnv[j + 1];
                 }
-                dsnv[n - 1] = null;
+                dsnv = Arrays.copyOf(dsnv, n-1);
                 n--;
                 System.out.println("Da xoa nhan vien co ma " + ma);
                 return;
@@ -175,39 +174,43 @@ public class DanhSachNV {
                 System.out.println("5. Gioi tinh");
                 System.out.println("6. Luong");
                 System.out.println("0. Thoat");
-                System.out.print("Nhap lua chon: ");
-                int choice = sc.nextInt();
-                switch (choice) {
-                    case 1:
-                        System.out.print("Nhap ho moi: ");
-                        String ho = sc.nextLine();
-                        dsnv[i].setHo(ho);
-                        break;
-                    case 2:
-                        System.out.print("Nhap ten moi: ");
-                        String ten = sc.nextLine();
-                        dsnv[i].setTen(ten);
-                        break;
-                    case 3:
-                        System.out.print("Nhap SDT moi: ");
-                        String sdt = sc.nextLine();
-                        dsnv[i].setSDT(sdt);
-                        break;
-                    case 4:
-                        System.out.print("Nhap ngay sinh moi: ");
-                        String ngaysinh = sc.nextLine();
-                        dsnv[i].setNgaySinh(ngaysinh);
-                        break;
-                    case 5:
-                        System.out.print("Nhap gioi tinh moi: ");
-                        String gioitinh = sc.nextLine();
-                        dsnv[i].setGioiTinh(gioitinh);
-                        break;
-                    case 6:
-                        System.out.print("Nhap luong moi: ");
-                        double luong = sc.nextDouble();
-                        dsnv[i].setLuong(luong);
-                        break;
+
+                int choice;
+                do {
+                    System.out.print("Nhap lua chon: ");
+                    choice = sc.nextInt();
+                    switch (choice) {
+                        case 1:
+                            System.out.print("Nhap ho moi: ");
+                            String ho = sc.nextLine();
+                            dsnv[i].setHo(ho);
+                            break;
+                        case 2:
+                            System.out.print("Nhap ten moi: ");
+                            String ten = sc.nextLine();
+                            dsnv[i].setTen(ten);
+                            break;
+                        case 3:
+                            System.out.print("Nhap SDT moi: ");
+                            String sdt = sc.nextLine();
+                            dsnv[i].setSDT(sdt);
+                            break;
+                        case 4:
+                            System.out.print("Nhap ngay sinh moi: ");
+                            String ngaysinh = sc.nextLine();
+                            dsnv[i].setNgaySinh(ngaysinh);
+                            break;
+                        case 5:
+                            System.out.print("Nhap gioi tinh moi: ");
+                            String gioitinh = sc.nextLine();
+                            dsnv[i].setGioiTinh(gioitinh);
+                            break;
+                        case 6:
+                            System.out.print("Nhap luong moi: ");
+                            double luong = sc.nextDouble();
+                            dsnv[i].setLuong(luong);
+                            break;
+                    }
                 } while (choice != 0);
                 return;
             }
@@ -215,4 +218,17 @@ public class DanhSachNV {
         System.out.println("Khong tim thay nhan vien co ma " + manv);
     }
 
+    //Thống kê:
+    public int[] thongKeGioiTinh() {
+        int nam = 0, nu = 0;
+        for (int i = 0; i < n; i++) {
+            if (dsnv[i].getGioiTinh().equals("nam") || dsnv[i].getGioiTinh().equals( "Nam")) {
+                nam++;
+            }
+            else nu++;
+        }
+        System.out.println("Nam: " + nam);
+        System.out.println("Nu: " + nu);
+        return new int[]{nam, nu};
+    }
 }

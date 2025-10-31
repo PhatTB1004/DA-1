@@ -30,7 +30,7 @@ public class MenuNhanVien {
                     System.out.println();
                     break;
                 case 3:
-                    dsNV.themdsnv();
+                    dsNV.themNhanVien();
                     break;
                 case 4:
                     System.out.println("1. Tim theo ma.");

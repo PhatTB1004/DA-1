@@ -1,16 +1,19 @@
 package Java.DoAn.DS_Class;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 import Java.DoAn.Class_chinh.Sach;
 import Java.DoAn.Class_chinh.SachNuocNgoai;
 import Java.DoAn.Class_chinh.TapChi;
 
 public class DanhSachSach {
-    Sach[] ds;
-    int n;
+    private Sach[] ds;
+    private int n;
 
     //Hàm thiết lập:
     public DanhSachSach() {
-        ds = new Sach[100];
         n = 0;
     }
     public DanhSachSach(Sach[] ds, int n) {
@@ -18,8 +21,11 @@ public class DanhSachSach {
         this.n = n;
     }
     public DanhSachSach(DanhSachSach s) {
-        this.ds = s.ds;
         this.n = s.n;
+        this.ds = new Sach[n];
+        for (int i = 0; i < n; i++) {
+            this.ds[i] = s.ds[i];
+        }
     }
 
     //Nhập, xuất:
@@ -119,7 +125,7 @@ public class DanhSachSach {
                 for (int j = i; j < n - 1; j++) {
                     ds[j] = ds[j + 1];
                 }
-                ds[n - 1] = null;
+                ds = Arrays.copyOf(ds, n-1);
                 n--;
                 System.out.println("Da xoa sach co ma " + ma);
                 return;
@@ -154,66 +160,89 @@ public class DanhSachSach {
                 }
                 System.out.println("0. Thoat");
                 java.util.Scanner sc = new java.util.Scanner(System.in);
-                int choice = sc.nextInt();  
+                int choice;
                 sc.nextLine();
-                switch (choice) {
-                    case 1:
-                        System.out.print("Nhap ten sach moi: ");
-                        String tensach = sc.nextLine();
-                        ds[i].setTenSach(tensach);
-                        break;
-                    case 2:
-                        System.out.print("Nhap tac gia moi: ");
-                        String tacgia = sc.nextLine();
-                        ds[i].setTacGia(tacgia);
-                        break;
-                    case 3:
-                        System.out.print("Nhap ma the loai moi: ");
-                        String maTL = sc.nextLine();
-                        ds[i].setMaTL(maTL);
-                        break;
-                    case 4:
-                        System.out.print("Nhap ma nha xuat ban moi: ");
-                        String maNXB = sc.nextLine();
-                        ds[i].setMaNXB(maNXB);
-                        break;
-                    case 5:
-                        System.out.print("Nhap so luong moi: ");
-                        int soLuong = sc.nextInt();
-                        ds[i].setSoLuong(soLuong);
-                        break;
-                    case 6:
-                        System.out.print("Nhap don gia moi: ");
-                        double donGia = sc.nextDouble();
-                        ds[i].setDonGia(donGia);
-                        break;
-                    case 7:
-                        if (ds[i] instanceof SachNuocNgoai) {
-                            System.out.print("Nhap quoc gia moi: ");
-                            String quocgia = sc.nextLine();
-                            ((SachNuocNgoai) ds[i]).setQuocGia(quocgia);
-                        } else if (ds[i] instanceof TapChi) {
-                            System.out.print("Nhap so phat hanh moi: ");
-                            int sophathanh = sc.nextInt();
-                            ((TapChi) ds[i]).setSoPhatHanh(sophathanh);
-                        }
-                        break;
-                    case 8:
-                        if (ds[i] instanceof SachNuocNgoai) {
-                            System.out.print("Nhap ngon ngu moi: ");
-                            String ngonngu = sc.nextLine();
-                            ((SachNuocNgoai) ds[i]).setNgonNgu(ngonngu);
-                        } else if (ds[i] instanceof TapChi) {
-                            System.out.print("Nhap chuyen muc moi: ");
-                            String chuyenmuc = sc.nextLine();
-                            ((TapChi) ds[i]).setChuyenMuc(chuyenmuc);
-                        }
-                        break;
+                do {
+                    System.out.print("Nhap lua chon: ");
+                    choice = sc.nextInt();
+                    switch (choice) {
+                        case 1:
+                            System.out.print("Nhap ten sach moi: ");
+                            String tensach = sc.nextLine();
+                            ds[i].setTenSach(tensach);
+                            break;
+                        case 2:
+                            System.out.print("Nhap tac gia moi: ");
+                            String tacgia = sc.nextLine();
+                            ds[i].setTacGia(tacgia);
+                            break;
+                        case 3:
+                            System.out.print("Nhap ma the loai moi: ");
+                            String maTL = sc.nextLine();
+                            ds[i].setMaTL(maTL);
+                            break;
+                        case 4:
+                            System.out.print("Nhap ma nha xuat ban moi: ");
+                            String maNXB = sc.nextLine();
+                            ds[i].setMaNXB(maNXB);
+                            break;
+                        case 5:
+                            System.out.print("Nhap so luong moi: ");
+                            int soLuong = sc.nextInt();
+                            ds[i].setSoLuong(soLuong);
+                            break;
+                        case 6:
+                            System.out.print("Nhap don gia moi: ");
+                            double donGia = sc.nextDouble();
+                            ds[i].setDonGia(donGia);
+                            break;
+                        case 7:
+                            if (ds[i] instanceof SachNuocNgoai) {
+                                System.out.print("Nhap quoc gia moi: ");
+                                String quocgia = sc.nextLine();
+                                ((SachNuocNgoai) ds[i]).setQuocGia(quocgia);
+                            } else if (ds[i] instanceof TapChi) {
+                                System.out.print("Nhap so phat hanh moi: ");
+                                int sophathanh = sc.nextInt();
+                                ((TapChi) ds[i]).setSoPhatHanh(sophathanh);
+                            }
+                            break;
+                        case 8:
+                            if (ds[i] instanceof SachNuocNgoai) {
+                                System.out.print("Nhap ngon ngu moi: ");
+                                String ngonngu = sc.nextLine();
+                                ((SachNuocNgoai) ds[i]).setNgonNgu(ngonngu);
+                            } else if (ds[i] instanceof TapChi) {
+                                System.out.print("Nhap chuyen muc moi: ");
+                                String chuyenmuc = sc.nextLine();
+                                ((TapChi) ds[i]).setChuyenMuc(chuyenmuc);
+                            }
+                            break;
+                    }
                 } while (choice != 0);
                 return;
             }
         }
         System.out.println("Khong tim thay sach co ma " + masach);  
+    }
+
+        //Thống kê:
+    public Map<String, Integer> thongKeTheLoai() {
+        Map<String, Integer> theloaiMap = new HashMap<>();
+        for (int i=0; i<n; i++) {
+            String tl = ds[i].getMaTL();
+            if (theloaiMap.containsKey(tl)) {
+                theloaiMap.put(tl, theloaiMap.get(tl) + 1);
+            }
+            else {
+                theloaiMap.put(tl, 1);
+            }
+        }
+        System.out.println("The Loai:");
+        for (Map.Entry<String, Integer> entry : theloaiMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue() + "quyen");
+        }
+        return theloaiMap;
     }
 }
                 
