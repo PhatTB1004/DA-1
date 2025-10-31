@@ -2,8 +2,8 @@ package Java.DoAn.Class_chinh;
 
 public class TapChi  extends Sach {
     // Thuộc tính:
-    int sophathanh;
-    String chuyenmuc;
+    private int sophathanh;
+    private String chuyenmuc;
 
     // Phương thức:
 

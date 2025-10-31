@@ -2,9 +2,9 @@ package Java.DoAn.Class_chinh;
 
 public class Sach {
     // Thuộc tính:
-    String masach, tensach, tacgia, matl, manxb;
-    int soLuong;
-    double dongia;
+    private String masach, tensach, tacgia, matl, manxb;
+    private int soLuong;
+    private double dongia;
 
     // Phương thức:
 

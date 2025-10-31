@@ -3,43 +3,43 @@ package Java.DoAn.Class_chinh;
 import java.util.Scanner;
 public class TheLoai {
     //thuộc tính
-    String maTheLoai, tenTheLoai;
+    private String matheloai, tentheloai;
 
     //hàm thiết lập
     public TheLoai() {
     }
-    public TheLoai(String maTheLoai, String tenTheLoai) {
-        this.maTheLoai = maTheLoai;
-        this.tenTheLoai = tenTheLoai;
+    public TheLoai(String matheloai, String tentheloai) {
+        this.matheloai = matheloai;
+        this.tentheloai = tentheloai;
     }
     public TheLoai(TheLoai t) {
-        this.maTheLoai = t.maTheLoai;
-        this.tenTheLoai = t.tenTheLoai;
+        this.matheloai = t.matheloai;
+        this.tentheloai = t.tentheloai;
     }
     
     //nhập, xuất
     public void nhap() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ma the loai: ");
-        maTheLoai = sc.nextLine();
+        matheloai = sc.nextLine();
         System.out.print("Nhap ten the loai: ");
-        tenTheLoai = sc.nextLine();
+        tentheloai = sc.nextLine();
     }
     public void xuat() {
-        System.out.printf("%-10s %-20s%n", maTheLoai, tenTheLoai);
+        System.out.printf("%-10s %-20s%n", matheloai, tentheloai);
     }
 
     //get,set
     public String getMaTheLoai() {
-        return maTheLoai;
+        return matheloai;
     }
-    public void setMaTheLoai(String maTheLoai) {
-        this.maTheLoai = maTheLoai;
+    public void setMaTheLoai(String matheloai) {
+        this.matheloai = matheloai;
     }
     public String getTenTheLoai() {
-        return tenTheLoai;
+        return tentheloai;
     }
-    public void setTenTheLoai(String tenTheLoai) {
-        this.tenTheLoai = tenTheLoai;
+    public void setTenTheLoai(String tentheloai) {
+        this.tentheloai = tentheloai;
     }
 }

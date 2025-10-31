@@ -2,8 +2,8 @@ package Java.DoAn.Class_chinh;
 
 public class HoaDon {
     // Thuộc tính:
-    String mahd, manv, makh, ngaylap;
-    double tongtien;
+    private String mahd, manv, makh, ngaylap;
+    private double tongtien;
 
     // Phương thức:
 

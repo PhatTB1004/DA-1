@@ -2,8 +2,8 @@ package Java.DoAn.Class_chinh;
 
 public class NhanVien {
     // Thuộc tính:
-    String manv, ho, ten, sdt, ngaysinh, gioitinh;
-    double luong;
+    private String manv, ho, ten, sdt, ngaysinh, gioitinh;
+    private double luong;
 
     // Phương thức:
 
