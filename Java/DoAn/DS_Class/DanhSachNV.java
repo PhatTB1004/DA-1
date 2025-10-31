@@ -64,13 +64,13 @@ public class DanhSachNV {
     }
 
     // tim:
-    public void timnv() {
+    public void timNhanVien() {
         java.util.Scanner sc = new java.util.Scanner(System.in);
         System.out.print("Nhap ma nhan vien can tim: ");
         String ma = sc.nextLine();
-        timnv(ma);
+        timNhanVien(ma);
     }
-    public NhanVien timnv(String ma) {
+    public NhanVien timNhanVien(String ma) {
         for (int i = 0; i < n; i++) {
             if (dsnv[i].getMaNV().equals(ma)) {
                 dsnv[i].xuat();
@@ -81,13 +81,13 @@ public class DanhSachNV {
         return null;
     }
 
-    public void tim_honv() {
+    public void timHoNhanVien() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ho nhan vien can tim: ");
         String ho = sc.next();
-        tim_honv(ho);
+        timHoNhanVien(ho);
     }
-    public NhanVien[] tim_honv(String ho) {
+    public NhanVien[] timHoNhanVien(String ho) {
         NhanVien[] timho = new NhanVien[0];
         int m=0;
         for (int i = 0; i < n; i++) {
@@ -107,13 +107,13 @@ public class DanhSachNV {
         else System.out.println("Khong tim thay nhan vien nao co ho " + ho);
         return null;
     }
-    public void tim_tennv() {
+    public void timTenNhanVien() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ten nhan vien can tim: ");
         String ten = sc.next();
-        tim_tennv(ten);
+        timTenNhanVien(ten);
     }
-    public NhanVien[] tim_tennv(String ten) {
+    public NhanVien[] timTenNhanVien(String ten) {
         NhanVien[] timten = new NhanVien[0];
         int m=0;
         for (int i = 0; i < n; i++) {
@@ -135,13 +135,13 @@ public class DanhSachNV {
     }
 
     // xoa:
-    public void xoanv() {
+    public void xoaNhanVien() {
         java.util.Scanner sc = new java.util.Scanner(System.in);
         System.out.print("Nhap ma nhan vien can xoa: ");
         String ma = sc.nextLine();
-        xoanv(ma);
+        xoaNhanVien(ma);
     }
-    public void xoanv(String ma) {
+    public void xoaNhanVien(String ma) {
         for (int i = 0; i < n; i++) {
             if (dsnv[i].getMaNV().equals(ma)) {
                 for (int j = i; j < n - 1; j++) {
@@ -157,13 +157,13 @@ public class DanhSachNV {
     }
 
     // sua:
-    public void suanv() {
+    public void suaNhanVien() {
         java.util.Scanner sc = new java.util.Scanner(System.in);
         System.out.print("Nhap ma nhan vien can sua: ");
         String ma = sc.nextLine();
-        suanv(ma);
+        suaNhanVien(ma);
     }
-    public void suanv(String manv) {
+    public void suaNhanVien(String manv) {
         java.util.Scanner sc = new java.util.Scanner(System.in);
         for (int i = 0; i < n; i++) {
             if (dsnv[i].getMaNV().equals(manv)) {               

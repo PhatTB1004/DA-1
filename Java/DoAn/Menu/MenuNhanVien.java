@@ -41,23 +41,23 @@ public class MenuNhanVien {
                     sc.nextLine();
                     switch (subChoice) {
                         case 1:
-                            dsNV.timnv();
+                            dsNV.timNhanVien();
                             break;
                         case 2:
-                            dsNV.tim_honv();
+                            dsNV.timHoNhanVien();
                             break;
                         case 3:
-                            dsNV.tim_tennv();
+                            dsNV.timTenNhanVien();
                             break;
                         default:
                             System.out.println("Lua chon khong hop le.");
                     }
                     break;
                 case 5:
-                    dsNV.xoanv();
+                    dsNV.xoaNhanVien();
                     break;
                 case 6:
-                    dsNV.suanv();
+                    dsNV.suaNhanVien();
                     break;
                 case 0:
                     System.out.println("Thoat khoi menu quan ly nhan vien.");
