@@ -31,7 +31,7 @@ public class DanhSachHoaDon {
     }
 
     //Nhập, xuất:
-    public void nhapdshd() {
+    public void nhap() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap so luong hoa don: ");
         n = sc.nextInt();
@@ -43,7 +43,7 @@ public class DanhSachHoaDon {
             dshd[i].nhap();
         }
     }
-    public void xuatdshd() {
+    public void xuat() {
         System.out.printf("%-10s %-15s %-15s %-15s %-15s\n", "Ma HD", "Ngay Lap", "Ma KH", "Ma NV", "Tong Tien");
         for (int i = 0; i < n; i++) {
             dshd[i].xuat();
