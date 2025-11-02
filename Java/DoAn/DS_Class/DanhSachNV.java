@@ -1,5 +1,7 @@
 package Java.DoAn.DS_Class;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -17,15 +19,8 @@ public class DanhSachNV {
         n = 0;
     }
     public DanhSachNV(NhanVien[] dsnv, int n) {
-        this.dsnv = dsnv;
         this.n = n;
-    }
-    public DanhSachNV(DanhSachNV ds) {
-        this.n = ds.n;
-        this.dsnv = new NhanVien[n];
-        for (int i = 0; i < n; i++) {
-            this.dsnv[i] = new NhanVien(ds.dsnv[i]);
-        }
+        this.dsnv = dsnv;
     }
 
     // Nhập, xuất:
@@ -34,6 +29,7 @@ public class DanhSachNV {
         System.out.print("Nhap so luong nhan vien: ");
         n = sc.nextInt();
         sc.nextLine();
+        dsnv = new NhanVien[n];
         for (int i = 0; i < n; i++) {
             System.out.println("Nhap thong tin nhan vien thu " + (i + 1) + ":");
             dsnv[i] = new NhanVien();
@@ -59,6 +55,11 @@ public class DanhSachNV {
         n = dsnv.length;
         dsnv = Arrays.copyOf(dsnv, n+1);
         dsnv[n] = new NhanVien();
+        n++;
+    }
+    public void themNhanVien(NhanVien nv) {
+        dsnv = Arrays.copyOf(dsnv, n + 1);
+        dsnv[n] = nv;
         n++;
     }
 
@@ -230,5 +231,37 @@ public class DanhSachNV {
         System.out.println("Nam: " + nam);
         System.out.println("Nu: " + nu);
         return new int[]{nam, nu};
+    }
+
+    //Đọc file:
+    public void docFile(String filePath) {
+        dsnv = new NhanVien[0];
+        n = 0;
+        try (Scanner sc = new Scanner(new File(filePath))) {
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine().trim();
+                if (line.isEmpty()) continue;
+
+                String[] parts = line.split(",");
+                if (parts.length < 5) continue;
+
+                String manv = parts[0].trim();
+                String ho = parts[1].trim();
+                String ten = parts[2].trim();
+                String sdt = parts[3].trim();
+                String ngaysinh = parts[4].trim();
+                String gioitinh = parts[5].trim();
+                double luong = Double.parseDouble(parts[6].trim());
+
+                NhanVien nv = new NhanVien(manv, ho, ten, sdt, ngaysinh, gioitinh, luong);
+                themNhanVien(nv);
+
+            }
+            System.out.println("Da doc file " + filePath);
+        } catch (FileNotFoundException e) {
+            System.out.println("Khong tim thay file: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Loi doc file: " + e.getMessage());
+        }
     }
 }

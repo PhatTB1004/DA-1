@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import Java.DoAn.Class_chinh.ChiTietHoaDon;
 import Java.DoAn.Class_chinh.HoaDon;
 
 public class DanhSachHoaDon {
@@ -47,23 +48,62 @@ public class DanhSachHoaDon {
         System.out.printf("%-10s %-15s %-15s %-15s %-15s\n", "Ma HD", "Ngay Lap", "Ma KH", "Ma NV", "Tong Tien");
         for (int i = 0; i < n; i++) {
             dshd[i].xuat();
-        }
+        }   
+    }
+
+    public void DSHD() {
+        n = 0;
+        dshd = new HoaDon[0];
     }
 
     //Thêm:
+    public void themHDFile() {
+        DanhSachCTHD dscthd = new DanhSachCTHD();
+        dscthd.docFile("Java/DoAn/Java/DoAn/input/inputChiTietHD.txt");
+
+        if (dscthd.size() == 0) {
+            System.out.println("Danh sach chi tiet hoa don rong hoac loi doc file.");
+            return;
+        }
+        String mahd = dscthd.getCTHD(0).getMaHD();
+
+        System.out.println("Nhap ma nhan vien: ");
+        String manv = sc.nextLine();
+
+        DanhSachNV dsnv = new DanhSachNV();
+        if (dsnv.timNhanVien(manv) == null) {
+            System.out.println("Ma nhan vien khong ton tai. Vui long nhap lai.");
+            return;
+        }
+
+        System.out.println("Nhap ma khach hang: ");
+        String makh = sc.nextLine();
+        System.out.println("Nhap ngay lap: ");
+        String ngaylap = sc.nextLine();
+
+        Double tongtien = 0.0;
+        for (int i = 0; i < dscthd.size(); i++) {
+            ChiTietHoaDon cthd = dscthd.getCTHD(i);
+            if (cthd != null && cthd.getMaHD().equals(mahd)) {
+                tongtien += cthd.getThanhTien();
+            }
+        }
+
+        HoaDon hd = new HoaDon(mahd, manv, makh, ngaylap, tongtien);
+        themHoaDon(hd);
+        System.out.println("Da them hoa don " + mahd + " voi tong tien = " + tongtien);
+    }
     public void themHoaDon() {
         n = dshd.length;
-        dshd = java.util.Arrays.copyOf(dshd, n+1);
+        dshd = Arrays.copyOf(dshd, n+1);
         dshd[n] = new HoaDon();
         dshd[n].nhap();
         n++;
     }
-    public void themHoaDon(String mahd) {
+    public void themHoaDon(HoaDon hd) {
         n = dshd.length;
-        dshd = java.util.Arrays.copyOf(dshd, n+1);
-        dshd[n] = new HoaDon();
-        dshd[n].setMaHD(mahd);
-        dshd[n].nhap();
+        dshd = Arrays.copyOf(dshd, n+1);
+        dshd[n] = new HoaDon(hd);
         n++;
     }
 

@@ -3,6 +3,7 @@ package Java.DoAn.DS_Class;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import Java.DoAn.Class_chinh.Sach;
 import Java.DoAn.Class_chinh.SachNuocNgoai;
@@ -91,6 +92,12 @@ public class DanhSachSach {
         ds = java.util.Arrays.copyOf(ds, n + 1);
         ds[n] = new Sach();
         ds[n].setMaSach(maSach);
+        n++;
+    }
+    public void themSach(Sach sach) {
+        n = ds.length;
+        ds = java.util.Arrays.copyOf(ds, n + 1);
+        ds[n] = new Sach(sach);
         n++;
     }
 
@@ -226,6 +233,17 @@ public class DanhSachSach {
         System.out.println("Khong tim thay sach co ma " + masach);  
     }
 
+    //Cập nhật số lượng:
+    public void capNhatSL(String masach, int soluong) {
+        for (int i=0;i<n;i++) {
+            if (ds[i].getMaSach().equals(masach)) {
+                int slmoi = ds[i].getSoLuong() + soluong;
+                ds[i].setSoLuong(slmoi);
+                return;
+            }
+        }
+    }
+
         //Thống kê:
     public Map<String, Integer> thongKeTheLoai() {
         Map<String, Integer> theloaiMap = new HashMap<>();
@@ -243,6 +261,54 @@ public class DanhSachSach {
             System.out.println(entry.getKey() + ": " + entry.getValue() + "quyen");
         }
         return theloaiMap;
+    }
+
+    //Đoc file:
+    public void docFile(String filePath) {
+        ds = new Sach[0];
+        n = 0;
+        try (Scanner sc = new Scanner(new java.io.File(filePath))) {
+            while (sc.hasNextLine()) {
+                String line = sc.nextLine().trim();
+                if (line.isEmpty()) continue;
+
+                String[] parts = line.split(",");
+                if (parts.length < 10) continue;
+
+                String masach = parts[0].trim();
+                String tensach = parts[1].trim();
+                String tacgia = parts[2].trim();
+                String matl = parts[3].trim();
+                String manxb = parts[4].trim();
+                int soLuong = Integer.parseInt(parts[5].trim());
+                double donGia = Double.parseDouble(parts[6].trim());
+                Sach s;
+
+                // Kiểm tra xem có loại sách hay không
+                if (parts.length == 7) { 
+                    s = new Sach(masach, tensach, tacgia, matl, manxb, soLuong, donGia);
+                } 
+                else if (parts[7].trim().equalsIgnoreCase("SachNN")) {
+                    String ngonNgu = parts[8].trim();
+                    String quocGia = parts[9].trim();
+                    s = new SachNuocNgoai(masach, tensach, tacgia, matl, manxb, soLuong, donGia, ngonNgu, quocGia);
+                } 
+                else if (parts[7].trim().equalsIgnoreCase("TapChi")) {
+                    int soPhatHanh = Integer.parseInt(parts[9].trim());
+                    String chuyenMuc = parts[10].trim();
+                    s = new TapChi(masach, tensach, tacgia, matl, manxb, soLuong, donGia, soPhatHanh, chuyenMuc);
+                } 
+                else {
+                    continue; // bỏ dòng lỗi
+                }
+                themSach(s);
+            }
+            System.out.println("Da doc file " + filePath);
+        } catch (java.io.FileNotFoundException e) {
+            System.out.println("Khong tim thay file: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Loi doc file: " + e.getMessage());
+        }
     }
 }
                 
