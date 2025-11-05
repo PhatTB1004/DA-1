@@ -7,6 +7,9 @@ import java.util.Map;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import Java.DoAn.DS_Class.DanhSachCTHD;
+import Java.DoAn.DS_Class.DanhSachKH;
+import Java.DoAn.DS_Class.DanhSachNV;
 
 import Java.DoAn.Class_chinh.ChiTietHoaDon;
 import Java.DoAn.Class_chinh.HoaDon;
@@ -47,7 +50,7 @@ public class DanhSachHoaDon {
         }
     }
     public void xuat() {
-        System.out.printf("%-10s %-15s %-15s %-15s %-15s\n", "Ma HD", "Ngay Lap", "Ma KH", "Ma NV", "Tong Tien");
+        System.out.printf("%-10s %-10s %-10s %-15s %15s\n", "Ma HD", "Ma NV", "Ma KH", "Ngay Lap", "Tong Tien");
         for (int i = 0; i < n; i++) {
             dshd[i].xuat();
         }   
@@ -204,32 +207,83 @@ public class DanhSachHoaDon {
         n = 0;
         DanhSachNV dsnv = new DanhSachNV();
         dsnv.docFile("Java/DoAn/input/inputNhanVien.txt");
+        DanhSachKH dskh = new DanhSachKH();
+        dskh.docFile("Java/DoAn/input/inputKhachHang.txt");
         try (Scanner sc = new Scanner(new File(filePath))) {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine().trim();
                 if (line.isEmpty()) continue;
 
                 String[] parts = line.split(",");
-                if (parts.length < 3) continue;
+                if (parts.length < 4) continue;
 
                 String mahd = parts[0].trim();
                 String manv = parts[1].trim();
                 if (dsnv.timNhanVien(manv) == null) {
-                    System.out.println("Ma nhan vien khong ton tai. Vui long kiem tra lai.");
+                    System.out.println("Ma nhan vien " + manv + " khong ton tai. Bo qua hoa don " + mahd);
                     continue;
                 }
                 String makh = parts[2].trim();
+                if (dskh.timKhachHang(makh) == null) {
+                    System.out.println("Ma khach hang " + makh + " khong ton tai. Bo qua hoa don " + mahd);
+                    continue;
+                }
                 String ngaylap = parts[3].trim();
 
                 HoaDon hd = new HoaDon(mahd, manv, makh, ngaylap, 0.0);
                 themHoaDon(hd);
 
             }
-            System.out.println("Da doc file " + filePath);
+            // System.out.println("Da doc file " + filePath);
         } catch (FileNotFoundException e) {
             System.out.println("Khong tim thay file: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Loi doc file: " + e.getMessage());
         }
+    }
+
+    // Phương thức mới: Xuất chi tiết hóa đơn theo mã
+    // Giải thích: Hàm này nhận vào mã hóa đơn (maHD)
+    // Nó sẽ tìm trong file chi tiết và in ra tất cả dòng chi tiết có cùng mã đó
+    public void xuatChiTietTheoMa(String maHD) {
+        // Bước 1: Kiểm tra xem mã hóa đơn có tồn tại không
+        HoaDon hd = timHoaDon(maHD);
+        if (hd == null) {
+            System.out.println("Khong tim thay hoa don voi ma: " + maHD);
+            return; // Dừng hàm nếu không tìm thấy
+        }
+
+        // Bước 2: Đọc file chi tiết hóa đơn
+        DanhSachCTHD dscthd = new DanhSachCTHD();
+        dscthd.docFile("Java/DoAn/input/inputChiTietHD.txt");
+
+        // Bước 3: In tiêu đề thông tin hóa đơn
+        System.out.println("\n========================================");
+        System.out.println("THONG TIN HOA DON: " + maHD);
+        System.out.println("========================================");
+        hd.xuat(); // In thông tin hóa đơn
+
+        // Bước 4: In tiêu đề bảng chi tiết
+        System.out.println("\n--- CHI TIET HOA DON ---");
+        System.out.printf("%-10s %-15s %-10s %12s %12s\n", 
+                         "Ma HD", "Ma Sach", "So Luong", "Don Gia", "Thanh Tien");
+        System.out.println("--------------------------------------------------------------");
+
+        // Bước 5: Duyệt qua tất cả chi tiết và chỉ in những dòng có mã trùng
+        boolean coChiTiet = false; // Biến đánh dấu có chi tiết hay không
+        for (int i = 0; i < dscthd.size(); i++) {
+            ChiTietHoaDon ct = dscthd.getCTHD(i);
+            // So sánh mã hóa đơn: nếu trùng thì in ra
+            if (ct.getMaHD().equals(maHD)) {
+                ct.xuat(); // Gọi phương thức xuat() của ChiTietHoaDon
+                coChiTiet = true; // Đánh dấu đã có chi tiết
+            }
+        }
+
+        // Bước 6: Thông báo nếu không có chi tiết nào
+        if (!coChiTiet) {
+            System.out.println("Khong co chi tiet nao cho hoa don nay.");
+        }
+        System.out.println("========================================\n");
     }
 }

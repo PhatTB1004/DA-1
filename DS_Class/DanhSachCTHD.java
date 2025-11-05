@@ -32,7 +32,7 @@ public class DanhSachCTHD {
                 ChiTietHoaDon cthd = new ChiTietHoaDon(mahd, masach, soluong, dongia, thanhtien);
                 themChiTietHoaDon(cthd);
             }
-            System.out.println("Da doc file " + filePath);
+            // System.out.println("Da doc file " + filePath);
         } catch (FileNotFoundException e) {
             System.out.println("Khong tim thay file: " + e.getMessage());
         } catch (Exception e) {

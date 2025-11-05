@@ -1,0 +1,10 @@
+NCC001,Cong ty sach Thanh Hoa,123 Nguyen Trai - Ha Noi,0243843456
+NCC002,Nha sach Minh Khai,456 Le Loi - TP.HCM,0287654321
+NCC003,Cong ty Phat Hanh Tri Thuc,789 Tran Hung Dao - Da Nang,0236123789
+NCC004,Nha cung cap Van Phong Pham,321 Hoang Hoa Tham - Hue,0234567890
+NCC005,Cong ty Sach Giao Khoa,654 Ly Thuong Kiet - Hai Phong,0225678901
+NCC006,Nha phan phoi Sach Thieu Nhi,987 Nguyen Hue - Can Tho,0292789012
+NCC007,Cong ty Sach Chuyen Nganh,147 Ba Trieu - Ha Noi,0243890123
+NCC008,Nha sach Tan Viet,258 Hai Ba Trung - TP.HCM,0287901234
+NCC009,Cong ty Van Hoa Pham,369 Le Duan - Da Nang,0236012345
+NCC010,Nha cung cap Sach Ngoai Van,741 Tran Phu - Nha Trang,0258123456

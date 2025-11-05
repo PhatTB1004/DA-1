@@ -5,15 +5,15 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import Java.DoAn.Class_chinh.ChiTietHoaDon;
+import Java.DoAn.Class_chinh.CTPhieuNhapHang;
 
-public class DanhSachCTHD {
-    private ChiTietHoaDon[] dscthd;
+public class DanhSachCTPNH {
+    private CTPhieuNhapHang[] dsctPNH;
     private int n;
 
     //Đọc file:
     public void docFile(String filePath) {
-        dscthd = new ChiTietHoaDon[0];
+        dsctPNH = new CTPhieuNhapHang[0];
         n = 0;
         try (Scanner sc = new Scanner(new File(filePath))) {
             while (sc.hasNextLine()) {
@@ -23,16 +23,15 @@ public class DanhSachCTHD {
                 String[] parts = line.split(",");
                 if (parts.length < 5) continue;
 
-                String mahd = parts[0].trim();
-                String masach = parts[1].trim();
+                String maPNH = parts[0].trim();
+                String maSach = parts[1].trim();
                 int soluong = Integer.parseInt(parts[2].trim());
-                double dongia = Double.parseDouble(parts[3].trim());
-                double thanhtien = Double.parseDouble(parts[4].trim());
+                double donGia = Double.parseDouble(parts[3].trim());
+                double thanhTien = Double.parseDouble(parts[4].trim());
 
-                ChiTietHoaDon cthd = new ChiTietHoaDon(mahd, masach, soluong, dongia, thanhtien);
-                themChiTietHoaDon(cthd);
+                CTPhieuNhapHang ctPNH = new CTPhieuNhapHang(maPNH, maSach, soluong, donGia, thanhTien);
+                themChiTietPNH(ctPNH);
             }
-            System.out.println("Da doc file " + filePath);
         } catch (FileNotFoundException e) {
             System.out.println("Khong tim thay file: " + e.getMessage());
         } catch (Exception e) {
@@ -40,21 +39,19 @@ public class DanhSachCTHD {
         }
     }
 
-    //Thêm:
-    public void themChiTietHoaDon(ChiTietHoaDon cthd) {
-        dscthd = Arrays.copyOf(dscthd, n + 1);
-        dscthd[n] = cthd;
+    public void themChiTietPNH(CTPhieuNhapHang ctPNH) {
+        dsctPNH = Arrays.copyOf(dsctPNH, n + 1);
+        dsctPNH[n] = ctPNH;
         n++;
     }
 
-    // Số phần tử
     public int size() {
         return n;
     }
 
     //get:
-    public ChiTietHoaDon getCTHD(int i) {
-        if (i >= 0 && i < n) return dscthd[i];
+    public CTPhieuNhapHang getCTPNH(int i) {
+        if (i >= 0 && i < n) return dsctPNH[i];
         return null;
     }
 }

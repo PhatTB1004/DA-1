@@ -39,7 +39,7 @@ public class HoaDon {
         tongtien = 0.0;
     }
     public void xuat() {
-        System.out.printf("%-10s %-10s %-10s %-15s %-10.2f\n", mahd, manv, makh, ngaylap, tongtien);
+        System.out.printf("%-10s %-10s %-10s %-15s %15.2f\n", mahd, manv, makh, ngaylap, tongtien);
     }
 
     // Get, set:
