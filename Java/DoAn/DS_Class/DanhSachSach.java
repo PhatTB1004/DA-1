@@ -267,19 +267,28 @@ public class DanhSachSach {
     public void docFile(String filePath) {
         ds = new Sach[0];
         n = 0;
+        DanhSachNXB dsnxb = new DanhSachNXB();
+        dsnxb.docFile("Java/DoAn/input/inputNhaXuatBan.txt");
         try (Scanner sc = new Scanner(new java.io.File(filePath))) {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine().trim();
                 if (line.isEmpty()) continue;
 
                 String[] parts = line.split(",");
-                if (parts.length < 10) continue;
+                if (parts.length < 7) continue;
 
                 String masach = parts[0].trim();
                 String tensach = parts[1].trim();
                 String tacgia = parts[2].trim();
                 String matl = parts[3].trim();
                 String manxb = parts[4].trim();
+                
+                // Validate mã NXB
+                if (dsnxb.timNXB(manxb) == null) {
+                    System.out.println("Ma nha xuat ban " + manxb + " khong ton tai. Bo qua sach " + masach);
+                    continue;
+                }
+                
                 int soLuong = Integer.parseInt(parts[5].trim());
                 double donGia = Double.parseDouble(parts[6].trim());
                 Sach s;
@@ -303,7 +312,7 @@ public class DanhSachSach {
                 }
                 themSach(s);
             }
-            System.out.println("Da doc file " + filePath);
+            // System.out.println("Da doc file " + filePath);
         } catch (java.io.FileNotFoundException e) {
             System.out.println("Khong tim thay file: " + e.getMessage());
         } catch (Exception e) {

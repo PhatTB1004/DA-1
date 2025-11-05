@@ -73,11 +73,11 @@ public class DanhSachNV {
     public NhanVien timNhanVien(String ma) {
         for (int i = 0; i < n; i++) {
             if (dsnv[i].getMaNV().equals(ma)) {
-                dsnv[i].xuat();
+        
                 return dsnv[i];
             }
         }
-        System.out.println("Khong tim thay nhan vien co ma " + ma);
+       
         return null;
     }
 
@@ -257,7 +257,7 @@ public class DanhSachNV {
                 themNhanVien(nv);
 
             }
-            System.out.println("Da doc file " + filePath);
+            // System.out.println("Da doc file " + filePath);
         } catch (FileNotFoundException e) {
             System.out.println("Khong tim thay file: " + e.getMessage());
         } catch (Exception e) {

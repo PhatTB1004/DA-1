@@ -3,12 +3,10 @@ package Java.DoAn.Class_chinh;
 import java.util.Scanner;
 
 public class CTPhieuNhapHang {
-    //thuộc tính    
     String maPNH, maSach; 
     int soLuong;
     double donGia ,thanhTien;
     
-    //hàm thiết lập
     public CTPhieuNhapHang(){
         maPNH = "";
         maSach ="";

@@ -29,6 +29,7 @@ public class MenuHoaDon extends Menu {
             System.out.println("4. Xoa hoa don");
             System.out.println("5. Sua thong tin hoa don");
             System.out.println("6. Thong ke tong thu");
+            System.out.println("7. Xem chi tiet hoa don theo ma");
             System.out.println("0. Thoat");
             System.out.print("Nhap lua chon cua ban: ");
             choice = sc.nextInt();
@@ -58,6 +59,12 @@ public class MenuHoaDon extends Menu {
                 case 6:
                     Map<Integer,Double> tongThu = dshd.thongKeTongThu();
                     System.out.printf("Tong thu tu cac hoa don: %.2f\n", tongThu);
+                    break;
+                case 7:
+                    // Chức năng mới: Xem chi tiết hóa đơn theo mã
+                    System.out.print("Nhap ma hoa don can xem chi tiet: ");
+                    String maChiTiet = sc.nextLine();
+                    dshd.xuatChiTietTheoMa(maChiTiet); // Gọi hàm vừa tạo ở DanhSachHoaDon
                     break;
                 case 0:
                     System.out.println("Thoat khoi menu quan ly hoa don.");

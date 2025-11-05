@@ -40,7 +40,7 @@ public class NhaXuatBan {
     }
 
     public void xuat(){
-        System.out.printf("%-10s %-20s %-30s %-15s %-25s%n", maNXB, tenNXB, diaChi, SoDienThoai, Email);
+        System.out.printf("%-8s %-30s %-45s %-15s %-30s%n", maNXB, tenNXB, diaChi, SoDienThoai, Email);
     }
 
     // get,set
