@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import Java.DoAn.DS_Class.DanhSachCTHD;
-import Java.DoAn.DS_Class.DanhSachKH;
-import Java.DoAn.DS_Class.DanhSachNV;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import Java.DoAn.Class_chinh.ChiTietHoaDon;
 import Java.DoAn.Class_chinh.HoaDon;
@@ -240,6 +240,20 @@ public class DanhSachHoaDon {
         } catch (Exception e) {
             System.out.println("Loi doc file: " + e.getMessage());
         }
+    }
+
+    //Ghi File:
+    public void ghiFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Java/DoAn/input/inputHoaDon.txt", true))) {
+            for (int i=0;i<n;i++) {
+                writer.print(dshd[i].getMaHD());
+                writer.print(", " + dshd[i].getMaNV());
+                writer.print(", " + dshd[i].getMaKH());
+                writer.print(", " + dshd[i].getNgayLap());
+                writer.println(", " + dshd[i].getTongTien());
+            }
+        }
+        catch (IOException e) {}
     }
 
     // Phương thức mới: Xuất chi tiết hóa đơn theo mã

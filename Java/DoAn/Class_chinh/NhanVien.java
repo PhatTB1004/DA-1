@@ -1,5 +1,9 @@
 package Java.DoAn.Class_chinh;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class NhanVien {
     // Thuộc tính:
     private String manv, ho, ten, sdt, ngaysinh, gioitinh;
@@ -49,6 +53,20 @@ public class NhanVien {
     }
     public void xuat() {
         System.out.printf("%-10s %-15s %-10s %-15s %-15s %-10s %-10.2f\n", manv, ho, ten, sdt, ngaysinh, gioitinh, luong);
+    }
+
+    //Ghi File:
+    public void ghiFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Java/DoAn/input/inputNhanVien.txt", true))) {
+            writer.print(getMaNV());
+            writer.print(", " + getHo());
+            writer.print(", " + getTen());
+            writer.print(", " + getSDT());
+            writer.print(", " + getNgaySinh());
+            writer.print(", " + getGioiTinh());
+            writer.println(", " + getLuong());
+        }
+        catch (IOException e) {}
     }
 
     // Get, set:

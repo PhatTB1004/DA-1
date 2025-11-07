@@ -2,6 +2,9 @@ package Java.DoAn.DS_Class;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -263,5 +266,21 @@ public class DanhSachNV {
         } catch (Exception e) {
             System.out.println("Loi doc file: " + e.getMessage());
         }
+    }
+
+    //Ghi File:
+    public void ghiFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Java/DoAn/input/inputNhanVien.txt", true))) {
+            for (int i=0;i<n;i++) {
+                writer.print(dsnv[i].getMaNV());
+                writer.print(", " + dsnv[i].getHo());
+                writer.print(", " + dsnv[i].getTen());
+                writer.print(", " + dsnv[i].getSDT());
+                writer.print(", " + dsnv[i].getNgaySinh());
+                writer.print(", " + dsnv[i].getGioiTinh());
+                writer.println(", " + dsnv[i].getLuong());
+            }
+        }
+        catch (IOException e) {}
     }
 }

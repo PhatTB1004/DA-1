@@ -1,8 +1,12 @@
 package Java.DoAn.Class_chinh;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Sach {
     // Thuộc tính:
-    private String masach, tensach, tacgia, matl, manxb;
+    private String masach, tensach, matg, matl, manxb;
     private int soLuong;
     private double dongia;
 
@@ -11,10 +15,10 @@ public class Sach {
     //Hàm thiết lập:
     public Sach() {
     }
-    public Sach(String masach, String tensach, String tacgia, String matl, String manxb, int soLuong, double dongia) {
+    public Sach(String masach, String tensach, String matg, String matl, String manxb, int soLuong, double dongia) {
         this.masach = masach;
         this.tensach = tensach;
-        this.tacgia = tacgia;
+        this.matg = matg;
         this.matl = matl;
         this.manxb = manxb;
         this.soLuong = soLuong;
@@ -23,7 +27,7 @@ public class Sach {
     public Sach(Sach s) {
         this.masach = s.masach;
         this.tensach = s.tensach;
-        this.tacgia = s.tacgia;
+        this.matg = s.matg;
         this.matl = s.matl;
         this.manxb = s.manxb;
         this.soLuong = s.soLuong;
@@ -37,8 +41,8 @@ public class Sach {
         masach = sc.nextLine();
         System.out.print("Nhap ten sach: ");
         tensach = sc.nextLine();
-        System.out.print("Nhap tac gia: ");
-        tacgia = sc.nextLine();
+        System.out.print("Nhap ma tac gia: ");
+        matg = sc.nextLine();
         System.out.print("Nhap ma the loai: ");
         matl = sc.nextLine();
         System.out.print("Nhap ma nha xuat ban: ");
@@ -49,7 +53,18 @@ public class Sach {
         dongia = sc.nextDouble();
     }
     public void xuat() {
-        System.out.printf("%-10s %-20s %-20s %-10s %-10s %-10d %-10.2f", masach, tensach, tacgia, matl, manxb, soLuong, dongia);
+        System.out.printf("%-10s %-20s %-20s %-10s %-10s %-10d %-10.2f", masach, tensach, matg, matl, manxb, soLuong, dongia);
+    }
+
+    //Ghi File:
+    public String StringFile() {
+        return getMaSach() + ", " + getTenSach() + ", " + getMaTG() + ", " + getMaTL() + ", " + getMaNXB() + ", " + getSoLuong() + ", " + getDonGia();
+    }
+    public void ghiFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Java/DoAn/input/inputSach.txt", true))) {
+            writer.println(StringFile());
+        }
+        catch (IOException e) {}
     }
 
     // Get, set:
@@ -65,11 +80,11 @@ public class Sach {
     public void setTenSach(String tensach) {
         this.tensach = tensach;
     }
-    public String getTacGia() {
-        return tacgia;
+    public String getMaTG() {
+        return matg;
     }
-    public void setTacGia(String tacgia) {
-        this.tacgia = tacgia;
+    public void setMaTG(String matg) {
+        this.matg = matg;
     }
     public String getMaTL() {
         return matl;

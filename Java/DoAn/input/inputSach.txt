@@ -12,9 +12,9 @@ S011,An toan thong tin,Nguyen Thi E,TL07,NXB09,13,87000
 S012,Co so du lieu,Tran Van F,TL08,NXB02,22,91000
 S013,Tri tue nhan tao nang cao,Do Van G,TL09,NXB03,11,97000
 S014,Tin hoc dai cuong,Le Thi H,TL10,NXB01,25,75000
-S015,Tap chi Khoa hoc may tinh,Tap chi CNTT VN,TL11,NXB10,30,45000,TapChi,,5,CNTT
-S016,Tac chi Toan hoc,Nguyen Bao,I02,NXB11,18,38000,TapChi,,3,Toan hoc
-S017,Tac chi Sinh hoc,Nguyen Hong,I03,NXB12,20,42000,TapChi,,2,Sinh hoc
-S018,Tac chi Kinh te Viet Nam,Tran Kien,I04,NXB13,25,50000,TapChi,,7,Kinh te
-S019,Tac chi Van hoc va Nghe thuat,Le Hoa,I05,NXB14,17,40000,TapChi,,4,Van hoc
-S020,Tac chi Du lich va Van hoa,Nguyen Nam,I06,NXB15,16,37000,TapChi,,6,Van hoa
+S015,Tap chi Khoa hoc may tinh,Tap chi CNTT VN,TL11,NXB10,30,45000,TapChi,5,CNTT
+S016,Tac chi Toan hoc,Nguyen Bao,I02,NXB11,18,38000,TapChi,3,Toan hoc
+S017,Tac chi Sinh hoc,Nguyen Hong,I03,NXB12,20,42000,TapChi,2,Sinh hoc
+S018,Tac chi Kinh te Viet Nam,Tran Kien,I04,NXB13,25,50000,TapChi,7,Kinh te
+S019,Tac chi Van hoc va Nghe thuat,Le Hoa,I05,NXB14,17,40000,TapChi,4,Van hoc
+S020,Tac chi Du lich va Van hoa,Nguyen Nam,I06,NXB15,16,37000,TapChi,6,Van hoa

@@ -2,6 +2,9 @@ package Java.DoAn.DS_Class;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -38,6 +41,20 @@ public class DanhSachCTHD {
         } catch (Exception e) {
             System.out.println("Loi doc file: " + e.getMessage());
         }
+    }
+
+    //Ghi File:
+    public void ghiFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Java/DoAn/input/inputChiTietHD.txt", true))) {
+            for (int i=0;i<n;i++) {
+                writer.print(dscthd[i].getMaHD());
+                writer.print(", " + dscthd[i].getMaSach());
+                writer.print(", " + dscthd[i].getSoLuong());
+                writer.print(", " + dscthd[i].getDonGia());
+                writer.println(", " + dscthd[i].getThanhTien());
+            }
+        }
+        catch (IOException e) {}
     }
 
     //Thêm:

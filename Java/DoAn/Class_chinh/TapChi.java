@@ -1,5 +1,9 @@
 package Java.DoAn.Class_chinh;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class TapChi  extends Sach {
     // Thuộc tính:
     private int sophathanh;
@@ -38,6 +42,19 @@ public class TapChi  extends Sach {
         super.xuat();
         System.out.printf("%-10d ", sophathanh);
         System.out.printf("%-10s\n", chuyenmuc);
+    }
+
+    @Override
+    public String StringFile() {
+        return super.StringFile() + ", " + getSoPhatHanh() + ", " + getChuyenMuc();
+    }
+
+    @Override
+    public void ghiFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Java/DoAn/input/inputSach.txt", true))) {
+            writer.println(StringFile());
+        }
+        catch (IOException e) {}
     }
 
     // Get, set:

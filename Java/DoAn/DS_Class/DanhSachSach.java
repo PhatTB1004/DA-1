@@ -1,5 +1,8 @@
 package Java.DoAn.DS_Class;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +37,7 @@ public class DanhSachSach {
         java.util.Scanner sc = new java.util.Scanner(System.in);
         System.out.print("Nhap so luong sach: ");
         n = sc.nextInt();
-        sc.nextLine();
+        ds = new Sach[n];
         for (int i = 0; i < n; i++) {
             System.out.println("Nhap thong tin sach thu " + (i + 1) + ":");
             System.out.println("Nhap sach binh thuong (1) hay sach nuoc ngoai (2) hay tap chi (3): ");
@@ -42,13 +45,10 @@ public class DanhSachSach {
             sc.nextLine();
             if (choice == 1) {
                 ds[i] = new Sach();
-                ds[i].nhap();
             } else if (choice == 2) {
                 ds[i] = new SachNuocNgoai();
-                ds[i].nhap();
             } else if (choice == 3) {
                 ds[i] = new TapChi();
-                ds[i].nhap();
             } else {
                 System.out.println("Lua chon khong hop le. Mac dinh nhap sach binh thuong.");
                 ds[i] = new Sach();
@@ -85,13 +85,6 @@ public class DanhSachSach {
             ds[n] = new Sach();
             ds[n].nhap();
         }
-        n++;
-    }
-    public void themSach(String maSach) {
-        n = ds.length;
-        ds = java.util.Arrays.copyOf(ds, n + 1);
-        ds[n] = new Sach();
-        ds[n].setMaSach(maSach);
         n++;
     }
     public void themSach(Sach sach) {
@@ -179,9 +172,9 @@ public class DanhSachSach {
                             ds[i].setTenSach(tensach);
                             break;
                         case 2:
-                            System.out.print("Nhap tac gia moi: ");
-                            String tacgia = sc.nextLine();
-                            ds[i].setTacGia(tacgia);
+                            System.out.print("Nhap ma tac gia moi: ");
+                            String matg = sc.nextLine();
+                            ds[i].setMaTG(matg);
                             break;
                         case 3:
                             System.out.print("Nhap ma the loai moi: ");
@@ -244,7 +237,7 @@ public class DanhSachSach {
         }
     }
 
-        //Thống kê:
+    //Thống kê:
     public Map<String, Integer> thongKeTheLoai() {
         Map<String, Integer> theloaiMap = new HashMap<>();
         for (int i=0; i<n; i++) {
@@ -279,7 +272,7 @@ public class DanhSachSach {
 
                 String masach = parts[0].trim();
                 String tensach = parts[1].trim();
-                String tacgia = parts[2].trim();
+                String matg = parts[2].trim();
                 String matl = parts[3].trim();
                 String manxb = parts[4].trim();
                 
@@ -295,17 +288,17 @@ public class DanhSachSach {
 
                 // Kiểm tra xem có loại sách hay không
                 if (parts.length == 7) { 
-                    s = new Sach(masach, tensach, tacgia, matl, manxb, soLuong, donGia);
+                    s = new Sach(masach, tensach, matg, matl, manxb, soLuong, donGia);
                 } 
                 else if (parts[7].trim().equalsIgnoreCase("SachNN")) {
                     String ngonNgu = parts[8].trim();
                     String quocGia = parts[9].trim();
-                    s = new SachNuocNgoai(masach, tensach, tacgia, matl, manxb, soLuong, donGia, ngonNgu, quocGia);
+                    s = new SachNuocNgoai(masach, tensach, matg, matl, manxb, soLuong, donGia, ngonNgu, quocGia);
                 } 
                 else if (parts[7].trim().equalsIgnoreCase("TapChi")) {
                     int soPhatHanh = Integer.parseInt(parts[9].trim());
                     String chuyenMuc = parts[10].trim();
-                    s = new TapChi(masach, tensach, tacgia, matl, manxb, soLuong, donGia, soPhatHanh, chuyenMuc);
+                    s = new TapChi(masach, tensach, matg, matl, manxb, soLuong, donGia, soPhatHanh, chuyenMuc);
                 } 
                 else {
                     continue; // bỏ dòng lỗi
@@ -318,6 +311,31 @@ public class DanhSachSach {
         } catch (Exception e) {
             System.out.println("Loi doc file: " + e.getMessage());
         }
+    }
+
+    //Ghi File:
+    public void ghiFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Java/DoAn/input/inputSach.txt", true))) {
+            for (int i=0;i<n;i++) {
+                writer.print(ds[i].getMaSach());
+                writer.print(", " + ds[i].getTenSach());
+                writer.print(", " + ds[i].getMaTG());
+                writer.print(", " + ds[i].getMaTL());
+                writer.print(", " + ds[i].getMaNXB());
+                writer.print(", " + ds[i].getSoLuong());
+                writer.print(", " + ds[i].getDonGia());
+                if (ds[i] instanceof SachNuocNgoai) {
+                    writer.print(", " + ((SachNuocNgoai)ds[i]).getNgonNgu());
+                    writer.print(", " + ((SachNuocNgoai)ds[i]).getQuocGia());
+                }
+                if (ds[i] instanceof TapChi) {
+                    writer.print(", " + ((TapChi)ds[i]).getSoPhatHanh());
+                    writer.print(", " + ((TapChi)ds[i]).getChuyenMuc());
+                }
+                writer.print("\n");
+            }
+        }
+        catch (IOException e) {}
     }
 }
                 

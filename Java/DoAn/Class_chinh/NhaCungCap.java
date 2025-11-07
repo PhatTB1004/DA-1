@@ -3,7 +3,7 @@ package Java.DoAn.Class_chinh;
 import java.util.Scanner;
 public class NhaCungCap {
     //thuộc tính
-    String tenNCC, maNCC, diaChi, sdt;
+    private String tenNCC, maNCC, diaChi, sdt;
 
     //hàm thiết lập;
     public NhaCungCap() {

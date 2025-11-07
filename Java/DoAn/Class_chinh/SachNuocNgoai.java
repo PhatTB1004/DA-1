@@ -1,5 +1,9 @@
 package Java.DoAn.Class_chinh;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class SachNuocNgoai extends Sach {
     // Thuộc tính:
     String ngonngu, quocgia;
@@ -36,6 +40,20 @@ public class SachNuocNgoai extends Sach {
         super.xuat();
         System.out.printf("%-10s ", ngonngu);
         System.out.printf("%-10s\n", quocgia);
+    }
+
+    //Ghi File:
+    @Override
+    public String StringFile() {
+        return super.StringFile() + ", " + getNgonNgu() + ", " + getQuocGia();
+    }
+
+    @Override
+    public void ghiFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("Java/DoAn/input/inputSach.txt", true))) {
+            writer.println(StringFile());
+        }
+        catch (IOException e) {}
     }
 
     // Get, set:
